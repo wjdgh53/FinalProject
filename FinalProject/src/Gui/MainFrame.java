@@ -59,9 +59,19 @@ public class MainFrame extends JFrame {
 		refresh(mainPanel);
 		
 	}
+	static void userpanel(){
+		mainPanel.removeAll();
+		mainPanel.add(new UserPanel());
+		refresh(mainPanel);
+	}
 	static void editpanel(){
 		mainPanel.removeAll();
 		mainPanel.add(new SimulPanel());
+		refresh(mainPanel);
+	}
+	static void adminpanel(){
+		mainPanel.removeAll();
+		mainPanel.add(new GUIAdministrator());
 		refresh(mainPanel);
 	}
 	static void refresh(Container contentPane){

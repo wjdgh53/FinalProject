@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import POS.Table;
+import POS.ThreadDemo;
 
 
 
@@ -65,10 +66,10 @@ public class SimulPanel extends JPanel implements ActionListener  {
 			setPreferredSize(new Dimension(1000, 800));
 			this.setLayout(null);			
 			{
-				timeLabel = new JLabel();
-				this.add(timeLabel);
-				timeLabel.setBounds(819, 12, 159, 89);
-				timeLabel.setFont(new java.awt.Font("¸¼Àº °íµñ",0,36));
+				setTimeLabel(new JLabel());
+				this.add(getTimeLabel());
+				getTimeLabel().setBounds(819, 12, 159, 89);
+				getTimeLabel().setFont(new java.awt.Font("¸¼Àº °íµñ",0,36));
 			}
 			{
 				startButton = new JButton();
@@ -124,15 +125,16 @@ public class SimulPanel extends JPanel implements ActionListener  {
 	public void actionPerformed(ActionEvent event)
 	{
 		if(event.getActionCommand().equals("Start")){
-			ThreadDemo123 th1 = new ThreadDemo123();			
-			th1.start();
+			//ThreadDemo th1 = new ThreadDemo();			
+			//th1.start();
 			Table t1 = new Table();
 			Table t2 = new Table();
-			
+			Table t3 = new Table();
 			if(!t1.isStatus())
 			{									
 				seatButton1.setEnabled(false);	
-				Thread12 th2 = new Thread12(t1.getTime());		
+				//new ThreadDemo(t1.getTime(),seatButton1,"Seat 1").start() ;
+				//Thread12 th2 = new Thread12(t1.getTime());		
 				//th1.run(t1.getTime(),seatButton1);
 				//th1.start();
 				//WaitingTime wt1 = new WaitingTime();
@@ -143,14 +145,32 @@ public class SimulPanel extends JPanel implements ActionListener  {
 			if(!t2.isStatus())
 			{									
 				seatButton2.setEnabled(false);	
+				//new ThreadDemo(t2.getTime(),seatButton2).start() ;
+				//Thread12 th2 = new Thread12(t1.getTime());
 				/*ThreadDemo123 th1 = new ThreadDemo123();		
 				th1.run(t1.getTime(),seatButton1);
 				th1.start();*/
 				//jButton1.setVisible(false);
 			}
-			}			
-			startButton.setVisible(false);
-		
+			if(!t3.isStatus())
+			{									
+				seatButton3.setEnabled(false);	
+				//new ThreadDemo(t3.getTime(),seatButton3).start() ;
+				//Thread12 th2 = new Thread12(t1.getTime());
+				/*ThreadDemo123 th1 = new ThreadDemo123();		
+				th1.run(t1.getTime(),seatButton1);
+				th1.start();*/
+				//jButton1.setVisible(false);
+			}
+		}			
+		startButton.setVisible(false);
+
+	}
+	public JLabel getTimeLabel() {
+		return timeLabel;
+	}
+	public void setTimeLabel(JLabel timeLabel) {
+		this.timeLabel = timeLabel;
 	}
 	public class Thread12 extends Thread
 	{
@@ -169,32 +189,6 @@ public class SimulPanel extends JPanel implements ActionListener  {
 
 		}
 	}
-	public class ThreadDemo123 extends Thread 
-	{
-		int minute = 0;
-		int hour = 9;
-
-		public void run()
-		{
-			for(int i = 0; i<720; i++)
-			{
-				minute++;
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				if(minute == 60)
-				{
-					hour++;
-					minute = 0;
-				}
-				timeLabel.setText(hour+ " : "+minute);
-
-			}
-		}
-
-	}
+	
 
 }

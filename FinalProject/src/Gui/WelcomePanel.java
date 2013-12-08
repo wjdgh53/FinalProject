@@ -68,7 +68,7 @@ public class WelcomePanel extends JPanel implements ActionListener {
 				MainFrame.seatpanel();
 			}
 			if (event.getActionCommand().equals("Admin")){	
-				MainFrame.editpanel();
+				MainFrame.adminpanel();
 			}
 			
 		}

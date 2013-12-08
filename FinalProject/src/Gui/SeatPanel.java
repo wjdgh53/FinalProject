@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import POS.Table;
+import POS.ThreadDemo;
 import POS.WaitingTime;
 
 
@@ -35,13 +36,12 @@ public class SeatPanel  extends JPanel implements ActionListener {
 	private JButton seatButton5;
 	private JButton seatButton6;
 	private JButton seatButton7;
-	private JButton seatButton8;
-	private JButton jButton1;
-	private JLabel jLabel1;
+	private JButton seatButton8;	
 	private JButton seatButton9;
 	private JButton seatButton10;
 	private JButton seatButton11;
 	private JButton seatButton12;
+	private static String seatChoose;
 	//WaitingTime wt = new WaitingTime();
 
 	/**
@@ -65,8 +65,12 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton1.setBounds(95, 94, 145, 128);
 				seatButton1.setFont(new java.awt.Font("¸¼Àº °íµñ",0,20));
 				seatButton1.addActionListener(this);
-				
-				
+				Table t1 = new Table();				
+				if(!t1.isStatus())
+				{									
+					seatButton1.setEnabled(false);	
+					new ThreadDemo(t1.getTime(),seatButton1,"Seat 1").start();					
+				}
 			}
 			{
 				seatButton2 = new JButton();
@@ -75,12 +79,12 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton2.setFont(new java.awt.Font("¸¼Àº °íµñ",0,20));
 				seatButton2.setBounds(95, 222, 145, 128);
 				seatButton2.addActionListener(this);
-				/*Table t2 = new Table();
+				Table t2 = new Table();
 				if(!t2.isStatus())
-				{
-					seatButton2.setEnabled(false);
-					//wt.run(t2.getTime(),seatButton2);
-				}		*/		
+				{									
+					seatButton2.setEnabled(false);	
+					new ThreadDemo(t2.getTime(),seatButton2,"Seat 2").start();					
+				}			
 			}
 			{
 				seatButton3 = new JButton();
@@ -91,8 +95,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton3.addActionListener(this);
 				Table t3 = new Table();
 				if(!t3.isStatus())
-				{
-					seatButton3.setEnabled(false);
+				{									
+					seatButton3.setEnabled(false);	
+					new ThreadDemo(t3.getTime(),seatButton3,"Seat 3").start();					
 				}
 			}
 			{
@@ -104,8 +109,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton4.addActionListener(this);
 				Table t4 = new Table();
 				if(!t4.isStatus())
-				{
-					seatButton4.setEnabled(false);
+				{									
+					seatButton4.setEnabled(false);	
+					new ThreadDemo(t4.getTime(),seatButton4,"Seat 4").start();					
 				}
 			}
 			{
@@ -117,8 +123,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton5.addActionListener(this);
 				Table t5 = new Table();
 				if(!t5.isStatus())
-				{
-					seatButton5.setEnabled(false);
+				{									
+					seatButton5.setEnabled(false);	
+					new ThreadDemo(t5.getTime(),seatButton5,"Seat 5").start();					
 				}
 			}
 			{
@@ -130,8 +137,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton6.addActionListener(this);
 				Table t6 = new Table();
 				if(!t6.isStatus())
-				{
-					seatButton6.setEnabled(false);
+				{									
+					seatButton6.setEnabled(false);	
+					new ThreadDemo(t6.getTime(),seatButton6,"Seat 6").start();					
 				}
 			}
 			{
@@ -143,8 +151,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton7.addActionListener(this);
 				Table t7 = new Table();
 				if(!t7.isStatus())
-				{
-					seatButton7.setEnabled(false);
+				{									
+					seatButton7.setEnabled(false);	
+					new ThreadDemo(t7.getTime(),seatButton7,"Seat 7").start();					
 				}
 			}
 			{
@@ -156,8 +165,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton8.addActionListener(this);
 				Table t8 = new Table();
 				if(!t8.isStatus())
-				{
-					seatButton8.setEnabled(false);
+				{									
+					seatButton8.setEnabled(false);	
+					new ThreadDemo(t8.getTime(),seatButton8,"Seat 8").start();					
 				}
 			}
 			{
@@ -169,8 +179,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton9.addActionListener(this);
 				Table t9 = new Table();
 				if(!t9.isStatus())
-				{
-					seatButton9.setEnabled(false);
+				{									
+					seatButton9.setEnabled(false);	
+					new ThreadDemo(t9.getTime(),seatButton9,"Seat 9").start();					
 				}
 			}
 			{
@@ -182,8 +193,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton10.addActionListener(this);
 				Table t10 = new Table();
 				if(!t10.isStatus())
-				{
-					seatButton10.setEnabled(false);
+				{									
+					seatButton10.setEnabled(false);	
+					new ThreadDemo(t10.getTime(),seatButton10,"Seat 10").start();					
 				}
 			}
 			{
@@ -195,8 +207,9 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton11.addActionListener(this);
 				Table t11 = new Table();
 				if(!t11.isStatus())
-				{
-					seatButton11.setEnabled(false);
+				{									
+					seatButton11.setEnabled(false);	
+					new ThreadDemo(t11.getTime(),seatButton11,"Seat 11").start();					
 				}
 			}
 			{
@@ -208,26 +221,12 @@ public class SeatPanel  extends JPanel implements ActionListener {
 				seatButton12.addActionListener(this);
 				Table t12 = new Table();
 				if(!t12.isStatus())
-				{
-					seatButton12.setEnabled(false);
+				{									
+					seatButton12.setEnabled(false);	
+					new ThreadDemo(t12.getTime(),seatButton12,"Seat 12").start();					
 				}
 			}
-			{
-				jLabel1 = new JLabel();
-				this.add(jLabel1);
-				jLabel1.setBounds(415, 264, 213, 85);
-				jLabel1.setFont(new java.awt.Font("¸¼Àº °íµñ",0,20));
-				jLabel1.setText("ee");
-				
-			}
-			{
-				jButton1 = new JButton();
-				this.add(jButton1);
-				jButton1.setText("Check");
-				jButton1.setBounds(84, 683, 108, 75);
-				jButton1.setFont(new java.awt.Font("¸¼Àº °íµñ",0,20));
-				jButton1.addActionListener(this);
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -236,93 +235,62 @@ public class SeatPanel  extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent event)
 	{
 		if (event.getActionCommand().equals("Seat 1")){	
-			System.out.println("seat1");			
+			setSeatChoose("Seat 1");
+			MainFrame.userpanel();			
 		}
 		if (event.getActionCommand().equals("Seat 2")){	
-			System.out.println("seat2");			
-		}
+			setSeatChoose("Seat 2");
+			MainFrame.userpanel();	
+			}
 		if (event.getActionCommand().equals("Seat 3")){	
-			System.out.println("seat3");			
+			setSeatChoose("Seat 3");
+			MainFrame.userpanel();			
 		}
 		if (event.getActionCommand().equals("Seat 4")){	
-			System.out.println("seat4");			
+			setSeatChoose("Seat 4");
+			MainFrame.userpanel();				
 		}
 		if (event.getActionCommand().equals("Seat 5")){	
-			System.out.println("seat5");			
+			setSeatChoose("Seat 5");
+			MainFrame.userpanel();			
 		}
 		if (event.getActionCommand().equals("Seat 6")){	
-			System.out.println("seat6");			
+			setSeatChoose("Seat 6");
+			MainFrame.userpanel();			
 		}
 		if (event.getActionCommand().equals("Seat 7")){	
-			System.out.println("seat7");			
+			setSeatChoose("Seat 7");
+			MainFrame.userpanel();				
 		}
 		if (event.getActionCommand().equals("Seat 8")){	
-			System.out.println("seat8");			
+			setSeatChoose("Seat 8");
+			MainFrame.userpanel();				
 		}
 		if (event.getActionCommand().equals("Seat 9")){	
-			System.out.println("seat9");			
+			setSeatChoose("Seat 9");
+			MainFrame.userpanel();				
 		}
 		if (event.getActionCommand().equals("Seat 10")){	
-			System.out.println("seat10");			
+			setSeatChoose("Seat 10");
+			MainFrame.userpanel();		
 		}
 		if (event.getActionCommand().equals("Seat 11")){	
-			System.out.println("seat11");			
+			setSeatChoose("Seat 11");
+			MainFrame.userpanel();				
 		}
 		if (event.getActionCommand().equals("Seat 12")){	
-			System.out.println("seat12");			
-		}
-		if (event.getActionCommand().equals("Check")){
-			Table t1 = new Table();
-			Table t2 = new Table();
-			
-			if(!t1.isStatus())
-			{									
-				seatButton1.setEnabled(false);	
-				//ThreadDemo123 th1 = new ThreadDemo123();		
-				//th1.run(t1.getTime(),seatButton1);
-				//th1.start();
-				//WaitingTime wt1 = new WaitingTime();
-				//wt1.start();
-				t1.countdown();
-				jButton1.setVisible(false);
-			}
-			if(!t2.isStatus())
-			{									
-				seatButton2.setEnabled(false);	
-				/*ThreadDemo123 th1 = new ThreadDemo123();		
-				th1.run(t1.getTime(),seatButton1);
-				th1.start();*/
-				//jButton1.setVisible(false);
-			}
+			setSeatChoose("Seat 12");
+			MainFrame.userpanel();				
 		}
 		
 	}
-	public class ThreadDemo123 extends Thread 
-	{
-		/*int minute = 0;
-		int hour = 9;*/
 
-		public void run()
-		{
-			for(int i = 0; i<720; i++)
-			{
-				//minute++;
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				/*if(minute == 60)
-				{
-					hour++;
-					minute = 0;
-				}*/
-				seatButton1.setText(i+"");
-				//System.out.println(i+"");
-			}
-		}
-
-		
+	public static String getSeatChoose() {
+		return seatChoose;
 	}
+
+	public void setSeatChoose(String seatChoose) {
+		this.seatChoose = seatChoose;
+	}
+	
 }
